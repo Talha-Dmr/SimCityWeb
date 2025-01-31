@@ -35,10 +35,10 @@ export function createCamera(gameWindow) {
             isLeftMouseDown = true;
         }
         if (event.button === MIDDLE_MOUSE_BUTTON) {
-            isLeftMouseDown = true;
+            isMiddleMouseDown = true;
         }
         if (event.button === RIGHT_MOUSE_BUTTON) {
-            isLeftMouseDown = true;
+            isRightMouseDown = true;
         }
     }
 
@@ -48,10 +48,10 @@ export function createCamera(gameWindow) {
             isLeftMouseDown = false;
         }
         if (event.button === MIDDLE_MOUSE_BUTTON) {
-            isLeftMouseDown = false;
+            isMiddleMouseDown = false;
         }
         if (event.button === RIGHT_MOUSE_BUTTON) {
-            isLeftMouseDown = false;
+            isRightMouseDown = false;
         }
     }
 
@@ -59,10 +59,10 @@ export function createCamera(gameWindow) {
         console.log('mousemove');
 
         const deltaX = (event.clientX - prevMouseX);
-        const deltaY = (event.clientY - prevMouseY)
+        const deltaY = (event.clientY - prevMouseY);
 
         if (isLeftMouseDown) {
-            cameraAzimuth += -(deltaX* ROTATION_SENSIVITY);
+            cameraAzimuth += -(deltaX * ROTATION_SENSIVITY);
             cameraElevation += (deltaY * ROTATION_SENSIVITY);
             cameraElevation = Math.min(MAX_CAMERA_ELEVATION, Math.max(MIN_CAMERA_ELEVATION, cameraElevation));
             updateCameraPosition();
